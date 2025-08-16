@@ -29,7 +29,7 @@ class BingoAppPage extends StatefulWidget {
 
 class _BingoAppPageState extends State<BingoAppPage> {
   int _selectedIndex = 0;
-  NavigationRailLabelType labelType = NavigationRailLabelType.all;
+  NavigationRailLabelType labelType = NavigationRailLabelType.none;
 
   @override
   Widget build(BuildContext context) {
