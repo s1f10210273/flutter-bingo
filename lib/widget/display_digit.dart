@@ -72,7 +72,7 @@ class _DisplayDigitState extends State<DisplayDigit> {
     return Center(
       child: Text(
         '$_currentNumber',
-        style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 200, fontWeight: FontWeight.bold),
       ),
     );
   }
