@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bingo/widget/display_digit.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +13,11 @@ class BingoPage extends StatefulWidget {
 
 class _MyBingoPageState extends State<BingoPage> {
   int _counter = 0;
+  final int _maxRandomNumber = 99;
 
-  void _incrementCounter() {
+  void _displayRandomNumber() {
     setState(() {
-      _counter++;
+      _counter = (Random().nextInt(_maxRandomNumber + 1));
     });
   }
 
@@ -32,8 +35,8 @@ class _MyBingoPageState extends State<BingoPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: _displayRandomNumber,
+        tooltip: 'random',
         child: const Icon(Icons.rocket),
       ),
     );
