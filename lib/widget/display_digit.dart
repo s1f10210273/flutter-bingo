@@ -4,45 +4,51 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class DisplayDigit extends StatefulWidget {
-  final int finalNumber;
+  final int? finalNumber;
 
   const DisplayDigit({super.key, required this.finalNumber});
 
   @override
-  DisplayDigitState createState() => DisplayDigitState();
+  State<DisplayDigit> createState() => _DisplayDigitState();
 }
 
-class DisplayDigitState extends State<DisplayDigit> {
-  int _currentNumber = 0;
+class _DisplayDigitState extends State<DisplayDigit> {
+  int? _currentNumber;
   Timer? _timer;
-  final int _displayDuration = 1500;
+
+  static const int _durationMs = 1500;
+  static const int _intervalMs = 50;
 
   @override
   void initState() {
     super.initState();
-    _startRandomNumberDisplay();
+    if (widget.finalNumber != null) {
+      _startRandomNumberDisplay();
+    }
   }
 
   @override
-  void didUpdateWidget(DisplayDigit oldWidget) {
+  void didUpdateWidget(covariant DisplayDigit oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.finalNumber != oldWidget.finalNumber) {
+    if (widget.finalNumber != null &&
+        widget.finalNumber != oldWidget.finalNumber) {
       _startRandomNumberDisplay();
     }
   }
 
   void _startRandomNumberDisplay() {
-    _timer?.cancel(); // 前のタイマーをキャンセル
+    _timer?.cancel();
+
     final random = Random();
     int elapsed = 0;
 
-    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
+    _timer = Timer.periodic(Duration(milliseconds: _intervalMs), (timer) {
       setState(() {
         _currentNumber = random.nextInt(100);
       });
 
-      elapsed += 10;
-      if (elapsed >= _displayDuration) {
+      elapsed += _intervalMs;
+      if (elapsed >= _durationMs) {
         _timer?.cancel();
         setState(() {
           _currentNumber = widget.finalNumber;
@@ -59,6 +65,10 @@ class DisplayDigitState extends State<DisplayDigit> {
 
   @override
   Widget build(BuildContext context) {
+    if (_currentNumber == null) {
+      return const SizedBox.shrink();
+    }
+
     return Center(
       child: Text(
         '$_currentNumber',
