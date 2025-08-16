@@ -28,16 +28,13 @@ class _MyBingoPageState extends State<BingoPage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('$_counter', style: Theme.of(context).textTheme.displayLarge),
-            DisplayDigit(finalNumber: _counter),
-          ],
+          children: <Widget>[DisplayDigit(finalNumber: _counter)],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.rocket),
       ),
     );
   }

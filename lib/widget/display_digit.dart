@@ -15,6 +15,7 @@ class DisplayDigit extends StatefulWidget {
 class DisplayDigitState extends State<DisplayDigit> {
   int _currentNumber = 0;
   Timer? _timer;
+  final int _displayDuration = 1500;
 
   @override
   void initState() {
@@ -35,13 +36,13 @@ class DisplayDigitState extends State<DisplayDigit> {
     final random = Random();
     int elapsed = 0;
 
-    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
         _currentNumber = random.nextInt(100);
       });
 
-      elapsed += 100;
-      if (elapsed >= 1000) {
+      elapsed += 10;
+      if (elapsed >= _displayDuration) {
         _timer?.cancel();
         setState(() {
           _currentNumber = widget.finalNumber;
@@ -61,7 +62,7 @@ class DisplayDigitState extends State<DisplayDigit> {
     return Center(
       child: Text(
         '$_currentNumber',
-        style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
       ),
     );
   }
