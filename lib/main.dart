@@ -1,4 +1,5 @@
 import 'package:bingo/pages/bingo.dart';
+import 'package:bingo/pages/stored_number_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -60,7 +61,7 @@ class _BingoAppPageState extends State<BingoAppPage> {
             ),
             const VerticalDivider(thickness: 1, width: 1),
             Expanded(
-              child: _selectedIndex == 0 ? BingoPage() : Text('Second Page'),
+              child: _selectedIndex == 0 ? BingoPage() : StoredNumberPage(),
             ),
           ],
         ),
