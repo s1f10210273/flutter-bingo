@@ -1,3 +1,4 @@
+import 'package:bingo/widget/display_digit.dart';
 import 'package:flutter/material.dart';
 
 class BingoPage extends StatefulWidget {
@@ -29,6 +30,7 @@ class _MyBingoPageState extends State<BingoPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('$_counter', style: Theme.of(context).textTheme.displayLarge),
+            DisplayDigit(finalNumber: _counter),
           ],
         ),
       ),
