@@ -12,7 +12,7 @@ class BingoPage extends HookWidget {
   Widget build(BuildContext context) {
     final controller = useStoredNumbers();
     final counter = useState<int?>(null);
-    final maxRandomNumber = 99;
+    final maxRandomNumber = 75;
 
     void displayRandomNumber() {
       final allNumbers = List.generate(maxRandomNumber + 1, (i) => i);
